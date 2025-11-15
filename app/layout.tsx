@@ -37,12 +37,21 @@ export const metadata: Metadata = {
     siteName: 'Advient Advisors',
     locale: 'en_US',
     type: 'website',
+    images: [
+      {
+        url: '/api/og',
+        width: 1200,
+        height: 630,
+        alt: 'Dr. Cory Kidd - Enterprise AI Strategy & Implementation',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Dr. Cory Kidd - Enterprise AI Strategy & Implementation',
     description:
       'Enterprise AI consultant with 25+ years building AI products for regulated industries.',
+    images: ['/api/og'],
   },
   robots: {
     index: true,
