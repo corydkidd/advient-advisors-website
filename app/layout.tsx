@@ -18,7 +18,7 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   title: 'Dr. Cory Kidd - Enterprise AI Strategy & Implementation | Advient Advisors',
   description:
-    'I help pharmaceutical, maritime, and industrial companies implement AI strategies that generate measurable ROI. MIT PhD with 25+ years building AI products.',
+    'We help pharmaceutical, maritime, and industrial companies implement AI strategies that generate measurable ROI. MIT PhD with 25+ years building AI products.',
   keywords: [
     'AI consultant',
     'enterprise AI strategy',
