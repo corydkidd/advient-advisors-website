@@ -57,6 +57,7 @@ export async function GET(req: NextRequest) {
                 color: '#00D9FF',
                 marginBottom: '24px',
                 fontFamily: 'system-ui, sans-serif',
+                display: 'flex',
               }}
             >
               ADVIENT ADVISORS
@@ -71,6 +72,7 @@ export async function GET(req: NextRequest) {
                 lineHeight: 1.1,
                 marginBottom: '16px',
                 fontFamily: 'system-ui, sans-serif',
+                display: 'flex',
               }}
             >
               Dr. Cory Kidd
@@ -83,6 +85,7 @@ export async function GET(req: NextRequest) {
                 height: '4px',
                 background: 'linear-gradient(90deg, #00D9FF 0%, transparent 100%)',
                 marginBottom: '32px',
+                display: 'flex',
               }}
             />
 
@@ -94,9 +97,12 @@ export async function GET(req: NextRequest) {
                 color: '#A0A4B0',
                 lineHeight: 1.3,
                 fontFamily: 'system-ui, sans-serif',
+                display: 'flex',
+                flexDirection: 'column',
               }}
             >
-              Enterprise AI Strategy &<br />Implementation
+              <span>Enterprise AI Strategy &</span>
+              <span>Implementation</span>
             </div>
           </div>
 
@@ -110,15 +116,16 @@ export async function GET(req: NextRequest) {
               justifyContent: 'center',
               position: 'relative',
               padding: '60px',
+              zIndex: 5,
             }}
           >
-            {/* Image Container with Cyan Border */}
+            {/* Image Container */}
             <div
               style={{
                 position: 'relative',
                 display: 'flex',
-                width: '100%',
-                maxWidth: '380px',
+                width: '380px',
+                height: '475px',
               }}
             >
               {/* Main Image */}
@@ -126,54 +133,36 @@ export async function GET(req: NextRequest) {
                 src={`data:image/jpeg;base64,${Buffer.from(imageData).toString('base64')}`}
                 style={{
                   width: '100%',
-                  height: 'auto',
+                  height: '100%',
                   borderRadius: '12px',
-                  position: 'relative',
-                  zIndex: 2,
+                  objectFit: 'cover',
                 }}
                 alt="Dr. Cory Kidd"
               />
 
-              {/* Cyan Glow Border */}
+              {/* Corner Frame Overlays */}
               <div
                 style={{
                   position: 'absolute',
-                  top: '-8px',
-                  left: '-8px',
-                  right: '-8px',
-                  bottom: '-8px',
-                  border: '3px solid #00D9FF',
-                  borderRadius: '16px',
-                  boxShadow: '0 0 40px rgba(0, 217, 255, 0.4)',
-                  zIndex: 1,
-                }}
-              />
-
-              {/* Top-Left Corner Frame */}
-              <div
-                style={{
-                  position: 'absolute',
-                  top: '-16px',
-                  left: '-16px',
+                  top: '-12px',
+                  left: '-12px',
                   width: '40px',
                   height: '40px',
                   borderTop: '3px solid #00D9FF',
                   borderLeft: '3px solid #00D9FF',
-                  zIndex: 3,
+                  display: 'flex',
                 }}
               />
-
-              {/* Bottom-Right Corner Frame */}
               <div
                 style={{
                   position: 'absolute',
-                  bottom: '-16px',
-                  right: '-16px',
+                  bottom: '-12px',
+                  right: '-12px',
                   width: '40px',
                   height: '40px',
                   borderBottom: '3px solid #00D9FF',
                   borderRight: '3px solid #00D9FF',
-                  zIndex: 3,
+                  display: 'flex',
                 }}
               />
             </div>
