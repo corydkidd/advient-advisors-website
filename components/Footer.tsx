@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { Linkedin, Mail, MapPin } from 'lucide-react';
 
 export default function Footer() {
@@ -48,6 +49,13 @@ export default function Footer() {
         <div className="pt-8 border-t border-border-subtle text-center">
           <p className="text-sm text-text-muted">
             &copy; 2025 Advient Advisors LLC. All rights reserved.
+            {' '}&middot;{' '}
+            <Link
+              href="/privacy"
+              className="text-text-muted hover:text-text-secondary transition-colors duration-300"
+            >
+              Privacy Policy
+            </Link>
           </p>
         </div>
       </div>
