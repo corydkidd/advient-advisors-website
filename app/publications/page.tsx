@@ -113,6 +113,27 @@ export default function PublicationPage() {
     }
   }, []);
 
+  const handleDownload = (pub: Publication) => {
+    const subscriberEmail = sessionStorage.getItem('publication-email');
+
+    // Fire tracking request (don't block the download)
+    if (subscriberEmail) {
+      fetch('/api/track-download', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: subscriberEmail, publicationId: pub.id }),
+      }).catch(() => {}); // Silent fail — don't block download
+    }
+
+    // Trigger the download
+    const link = document.createElement('a');
+    link.href = `/publications/${pub.filename}`;
+    link.download = pub.filename;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
@@ -144,8 +165,9 @@ export default function PublicationPage() {
         throw new Error(data.error || 'Failed to subscribe');
       }
 
-      // Success - unlock access
+      // Success - unlock access and store email for download tracking
       sessionStorage.setItem('publication-access', 'true');
+      sessionStorage.setItem('publication-email', email);
       setSuccess(true);
 
       // Brief delay to show success state before revealing publications
@@ -319,14 +341,13 @@ export default function PublicationPage() {
                           <p className="text-text-muted text-xs mb-6">{pub.pages} pages • PDF</p>
                         )}
 
-                        <a
-                          href={`/publications/${pub.filename}`}
-                          download
+                        <button
+                          onClick={() => handleDownload(pub)}
                           className="inline-flex items-center gap-2 text-cyan-primary hover:text-text-primary transition-colors duration-300 font-medium"
                         >
                           <Download className="w-4 h-4" />
                           Download PDF
-                        </a>
+                        </button>
                         </motion.div>
                       );
                     })}
