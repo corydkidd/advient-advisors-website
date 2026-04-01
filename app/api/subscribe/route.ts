@@ -28,7 +28,7 @@ export async function POST(request: NextRequest) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        email,
+        email_address: email,
         tags: ['publication-download'],
       }),
     });
@@ -37,12 +37,12 @@ export async function POST(request: NextRequest) {
 
     if (!response.ok) {
       // Handle already subscribed case gracefully
-      if (response.status === 400 && data.email) {
+      if (response.status === 400 && (data.email_address || data.email)) {
         // Email already exists - this is fine, treat as success
         return NextResponse.json({ success: true, alreadySubscribed: true });
       }
 
-      console.error('Buttondown API error:', data);
+      console.error('Buttondown API error:', response.status, JSON.stringify(data));
       return NextResponse.json(
         { error: 'Failed to subscribe. Please try again.' },
         { status: response.status }

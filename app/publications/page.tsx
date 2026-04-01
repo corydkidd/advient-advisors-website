@@ -2,21 +2,99 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FileText, Download, Mail, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
+import {
+  FileText,
+  Download,
+  Mail,
+  CheckCircle,
+  AlertCircle,
+  Loader2,
+  // Topic-specific icons
+  Brain,
+  Lightbulb,
+  Target,
+  TrendingUp,
+  Building2,
+  Workflow,
+  Cpu,
+  Users,
+  User,
+  BookOpen,
+  GraduationCap,
+  Pill,
+  Ship,
+  Stethoscope,
+  Shield,
+  Scale,
+  Cog,
+  BarChart3,
+  Rocket,
+  Zap,
+  type LucideIcon,
+} from 'lucide-react';
 import Link from 'next/link';
 import Footer from '@/components/Footer';
 
+// Icon mapping for auto-detection based on keywords
+const iconKeywords: { keywords: string[]; icon: LucideIcon }[] = [
+  { keywords: ['ai', 'artificial intelligence', 'machine learning', 'ml', 'neural', 'llm'], icon: Brain },
+  { keywords: ['strategy', 'strategic', 'roadmap'], icon: Target },
+  { keywords: ['roi', 'metrics', 'growth', 'revenue', 'profit', 'financial'], icon: TrendingUp },
+  { keywords: ['implementation', 'deploy', 'integration', 'workflow', 'process'], icon: Workflow },
+  { keywords: ['enterprise', 'corporate', 'business', 'organization'], icon: Building2 },
+  { keywords: ['pharma', 'pharmaceutical', 'drug', 'medication', 'pill'], icon: Pill },
+  { keywords: ['health', 'healthcare', 'medical', 'clinical', 'patient'], icon: Stethoscope },
+  { keywords: ['maritime', 'shipping', 'vessel', 'port', 'ocean', 'ship'], icon: Ship },
+  { keywords: ['insight', 'idea', 'innovation', 'creative'], icon: Lightbulb },
+  { keywords: ['tech', 'technical', 'software', 'system', 'architecture'], icon: Cpu },
+  { keywords: ['team', 'people', 'staff', 'workforce', 'employee'], icon: Users },
+  { keywords: ['about', 'bio', 'profile', 'founder', 'author'], icon: User },
+  { keywords: ['guide', 'handbook', 'manual', 'reference'], icon: BookOpen },
+  { keywords: ['learn', 'education', 'training', 'course'], icon: GraduationCap },
+  { keywords: ['security', 'privacy', 'compliance', 'protect'], icon: Shield },
+  { keywords: ['regulation', 'legal', 'policy', 'governance'], icon: Scale },
+  { keywords: ['automation', 'automate', 'efficiency', 'optimize'], icon: Cog },
+  { keywords: ['data', 'analytics', 'dashboard', 'report'], icon: BarChart3 },
+  { keywords: ['launch', 'startup', 'scale', 'accelerate'], icon: Rocket },
+  { keywords: ['quick', 'fast', 'rapid', 'agile'], icon: Zap },
+];
+
+// Get icon based on title and description, or use explicit override
+function getPublicationIcon(pub: Publication): LucideIcon {
+  if (pub.icon) return pub.icon;
+
+  const searchText = `${pub.title} ${pub.description}`.toLowerCase();
+
+  for (const { keywords, icon } of iconKeywords) {
+    if (keywords.some((keyword) => searchText.includes(keyword))) {
+      return icon;
+    }
+  }
+
+  return FileText; // Default fallback
+}
+
+// Publication type definition
+interface Publication {
+  id: string;
+  title: string;
+  description: string;
+  filename: string;
+  pages?: number;
+  icon?: LucideIcon; // Optional override - auto-detected if not provided
+}
+
 // Publication data - add your PDFs here
-const publications = [
+// Icons are auto-detected from title/description keywords, or you can specify one explicitly
+const publications: Publication[] = [
   {
-    id: 'linkedin-profile',
-    title: 'About Dr. Cory Kidd',
+    id: 'agentic-ai-playbook',
+    title: 'The Agentic AI Playbook: Building Systems That Survive Production',
     description:
-      'Background and experience of Dr. Cory Kidd, founder of Advient Advisors. More publications coming soon.',
-    filename: 'Cory Kidd LinkedIn Profile.pdf',
-    pages: 4,
+      'Most agentic AI projects fail not because the technology doesn\'t work, but because the architecture does. This guide covers the patterns, failure modes, and 90-day implementation path that separate the 11% getting real ROI from the 89% that aren\'t.',
+    filename: 'Agentic-AI-Playbook.pdf',
+    pages: 10,
   },
-  // Add more publications as needed
 ];
 
 export default function PublicationPage() {
@@ -216,17 +294,19 @@ export default function PublicationPage() {
               >
                 {publications.length > 0 ? (
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {publications.map((pub, index) => (
-                      <motion.div
-                        key={pub.id}
-                        className="bg-charcoal p-8 rounded-xl border border-border-subtle transition-all duration-300 hover:-translate-y-1 hover:border-cyan-primary hover:shadow-cyan-glow"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: index * 0.1 }}
-                      >
-                        <div className="w-16 h-16 flex items-center justify-center bg-cyan-primary bg-opacity-10 rounded-xl mb-6">
-                          <FileText className="w-8 h-8 text-cyan-primary" />
-                        </div>
+                    {publications.map((pub, index) => {
+                      const IconComponent = getPublicationIcon(pub);
+                      return (
+                        <motion.div
+                          key={pub.id}
+                          className="bg-charcoal p-8 rounded-xl border border-border-subtle transition-all duration-300 hover:-translate-y-1 hover:border-cyan-primary hover:shadow-cyan-glow"
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.6, delay: index * 0.1 }}
+                        >
+                          <div className="w-16 h-16 flex items-center justify-center bg-cyan-primary bg-opacity-10 rounded-xl mb-6">
+                            <IconComponent className="w-8 h-8 text-cyan-primary" />
+                          </div>
 
                         <h3 className="font-heading text-xl font-semibold text-text-primary mb-3">
                           {pub.title}
@@ -247,8 +327,9 @@ export default function PublicationPage() {
                           <Download className="w-4 h-4" />
                           Download PDF
                         </a>
-                      </motion.div>
-                    ))}
+                        </motion.div>
+                      );
+                    })}
                   </div>
                 ) : (
                   <div className="text-center py-16">
