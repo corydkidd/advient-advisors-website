@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { X, Check } from 'lucide-react';
+import Ticks from './Ticks';
 
 const traditional = [
   'Strategy firms hand over a deck and leave',
@@ -19,68 +20,69 @@ const advient = [
 
 export default function Differentiation() {
   return (
-    <section id="differentiation" className="py-24 bg-charcoal">
+    <section id="differentiation" className="py-20 lg:py-24 bg-cream text-ink">
       <div className="container">
         <motion.div
-          className="text-center max-w-3xl mx-auto mb-16"
+          className="max-w-3xl mb-14"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="font-heading text-4xl lg:text-5xl font-bold text-text-primary mb-4">
+          <div className="flex items-center gap-3.5 mb-5">
+            <Ticks />
+          </div>
+          <h2 className="font-display text-4xl lg:text-5xl text-navy leading-[1.08]">
             Why This Works Differently
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-6 lg:gap-8 items-center mb-16">
-          {/* Traditional Column */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 mb-20">
+          {/* Traditional Column — flat & muted, no gold */}
           <motion.div
-            className="p-8 rounded-xl border-2 border-border-subtle"
+            className="p-8 border border-navy/10 rounded-sm"
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h3 className="font-heading text-xl font-bold text-text-primary mb-6 text-center">
+            <h3 className="font-util text-xs font-semibold uppercase tracking-[0.16em] text-ink/40 mb-6">
               Traditional Consulting
             </h3>
             <ul className="space-y-4">
               {traditional.map((item, index) => (
                 <li
                   key={index}
-                  className="relative pl-6 text-base text-text-secondary leading-relaxed"
+                  className="relative pl-7 font-body text-base text-ink/45 leading-relaxed"
                 >
-                  <X className="absolute left-0 top-0 w-4 h-4 text-text-muted" />
+                  <X className="absolute left-0 top-1 w-4 h-4 text-ink/30" aria-hidden="true" />
                   {item}
                 </li>
               ))}
             </ul>
           </motion.div>
 
-          {/* VS Divider */}
-          <div className="hidden lg:flex items-center justify-center px-4">
-            <span className="font-heading text-2xl font-bold text-text-muted">VS</span>
-          </div>
-
-          {/* Advient Column */}
+          {/* Advient Column — lit, gold left-border + tick */}
           <motion.div
-            className="p-8 rounded-xl border-2 border-cyan-primary bg-cyan-primary bg-opacity-5"
+            className="p-8 border-l-2 border-gold bg-cream-dim/40 rounded-sm"
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h3 className="font-heading text-xl font-bold text-text-primary mb-6 text-center">
-              Advient Approach
-            </h3>
+            <div className="flex items-center gap-3.5 mb-6">
+              <Ticks />
+              <h3 className="font-util text-xs font-semibold uppercase tracking-[0.16em] text-navy">
+                Advient Approach
+              </h3>
+            </div>
             <ul className="space-y-4">
               {advient.map((item, index) => (
                 <li
                   key={index}
-                  className="relative pl-6 text-base text-text-secondary leading-relaxed"
+                  className="relative pl-7 font-body text-base text-ink leading-relaxed"
                 >
-                  <Check className="absolute left-0 top-0 w-4 h-4 text-cyan-primary font-bold" />
+                  <Check className="absolute left-0 top-1 w-4 h-4 text-gold" aria-hidden="true" />
                   {item}
                 </li>
               ))}
@@ -88,24 +90,24 @@ export default function Differentiation() {
           </motion.div>
         </div>
 
-        {/* Pullquote */}
-        <motion.div
-          className="max-w-4xl mx-auto p-8 bg-navy-deep border-l-4 border-cyan-primary rounded-lg"
+        {/* Pull-quote — cream breather */}
+        <motion.figure
+          className="max-w-4xl mx-auto text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <blockquote className="text-xl lg:text-2xl text-text-primary italic leading-relaxed">
-            <span className="text-4xl text-cyan-primary leading-none mr-2">&ldquo;</span>
-            I don&apos;t hand clients a strategy and walk away. I&apos;ve spent 25 years building
-            and shipping AI in the industries where it&apos;s hardest to get right, and I stay
-            in it until the system is running.&rdquo;
-            <footer className="mt-4 text-base not-italic text-text-secondary">
-              — Cory Kidd, Ph.D.
-            </footer>
+          <div className="w-12 h-px bg-gold mx-auto mb-8" aria-hidden="true" />
+          <blockquote className="font-body italic text-navy text-2xl lg:text-[2rem] leading-[1.4]">
+            &ldquo;I don&apos;t hand clients a strategy and walk away. I&apos;ve spent 25 years
+            building and shipping AI in the industries where it&apos;s hardest to get right, and
+            I stay in it until the system is running.&rdquo;
           </blockquote>
-        </motion.div>
+          <figcaption className="font-util text-sm font-medium uppercase tracking-[0.14em] text-[color:var(--gold-hl)] mt-8">
+            — Cory Kidd, Ph.D.
+          </figcaption>
+        </motion.figure>
       </div>
     </section>
   );
