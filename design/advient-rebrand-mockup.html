@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Advient Advisors — Rebrand Mockup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gloock&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1B2A4A;
+    --navy-deep:#14213B;
+    --navy-soft:#22345A;
+    --cream:#F8F4EE;
+    --cream-dim:#E9E2D6;
+    --gold:#C9A84C;
+    --gold-soft:#D8BD6A;
+    --ink:#1C2438;
+    --ink-soft:#41496180;
+
+    --display:'Gloock', Georgia, 'Times New Roman', serif;
+    --body:'Lora', Georgia, serif;
+    --util:'Instrument Sans', system-ui, -apple-system, sans-serif;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:var(--body);
+    background:var(--navy);
+    color:var(--cream);
+    -webkit-font-smoothing:antialiased;
+    line-height:1.55;
+  }
+  .wrap{max-width:1180px;margin:0 auto;padding:0 40px;}
+
+  /* ---------- calibration tick signature ---------- */
+  .ticks{display:flex;align-items:flex-end;gap:4px;height:18px;}
+  .ticks span{width:1.5px;background:var(--gold);display:block;}
+  .ticks span:nth-child(1){height:7px;}
+  .ticks span:nth-child(2){height:12px;}
+  .ticks span:nth-child(3){height:18px;}
+  .ticks span:nth-child(4){height:10px;}
+  .ticks span:nth-child(5){height:14px;}
+
+  .eyebrow{
+    font-family:var(--util);
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--gold);
+    display:flex;align-items:center;gap:14px;
+  }
+
+  /* ---------- top bar ---------- */
+  .topbar{
+    position:relative;z-index:5;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:26px 0;
+  }
+  .wordmark{
+    font-family:var(--display);
+    font-size:20px;letter-spacing:.01em;color:var(--cream);
+  }
+  .wordmark small{
+    font-family:var(--util);font-size:10px;letter-spacing:.34em;
+    text-transform:uppercase;color:var(--gold);display:block;margin-top:2px;font-weight:600;
+  }
+  .nav-cta{
+    font-family:var(--util);font-size:13px;font-weight:500;letter-spacing:.02em;
+    color:var(--cream);text-decoration:none;border:1px solid #ffffff2e;
+    padding:10px 18px;border-radius:2px;transition:all .25s ease;
+  }
+  .nav-cta:hover{border-color:var(--gold);color:var(--gold);}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    background:
+      radial-gradient(120% 90% at 82% 8%, #24365e 0%, rgba(36,54,94,0) 55%),
+      linear-gradient(180deg,var(--navy) 0%,var(--navy-deep) 100%);
+    border-bottom:1px solid #ffffff12;
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:1.15fr .85fr;gap:64px;align-items:center;
+    padding:74px 0 92px;
+  }
+  .hero h1{
+    font-family:var(--display);
+    font-weight:400;
+    font-size:clamp(2.7rem,5.4vw,4.55rem);
+    line-height:1.02;
+    letter-spacing:-.005em;
+    color:var(--cream);
+    margin:28px 0 0;
+  }
+  .hero h1 .accent{color:var(--gold);font-style:normal;}
+  .hero .lede{
+    font-size:clamp(1.05rem,1.5vw,1.24rem);
+    line-height:1.5;
+    color:#EDE7DBcC;
+    max-width:33ch;
+    margin:26px 0 0;
+  }
+  .hero-actions{display:flex;gap:14px;margin:38px 0 0;flex-wrap:wrap;}
+  .btn{
+    font-family:var(--util);font-size:14px;font-weight:600;letter-spacing:.01em;
+    padding:15px 26px;border-radius:2px;text-decoration:none;cursor:pointer;
+    transition:all .25s ease;display:inline-block;border:1px solid transparent;
+  }
+  .btn-gold{background:var(--gold);color:var(--navy-deep);}
+  .btn-gold:hover{background:var(--gold-soft);transform:translateY(-1px);}
+  .btn-ghost{border-color:#ffffff33;color:var(--cream);}
+  .btn-ghost:hover{border-color:var(--cream);}
+
+  .creds{
+    display:flex;flex-wrap:wrap;gap:10px 0;margin:44px 0 0;
+    font-family:var(--util);font-size:12.5px;letter-spacing:.04em;color:#D8D2C6b0;
+    text-transform:uppercase;font-weight:500;
+  }
+  .creds span{display:flex;align-items:center;}
+  .creds span:not(:last-child)::after{
+    content:"";width:4px;height:4px;border-radius:50%;background:var(--gold);
+    margin:0 16px;display:inline-block;opacity:.9;
+  }
+
+  /* headshot */
+  .portrait{position:relative;}
+  .portrait-frame{
+    position:relative;border:1px solid #ffffff1f;padding:10px;border-radius:3px;
+    background:linear-gradient(160deg,#ffffff08,#ffffff00);
+  }
+  .portrait-frame::before,.portrait-frame::after{
+    content:"";position:absolute;width:22px;height:22px;border:1.5px solid var(--gold);
+  }
+  .portrait-frame::before{top:-1px;left:-1px;border-right:none;border-bottom:none;}
+  .portrait-frame::after{bottom:-1px;right:-1px;border-left:none;border-top:none;}
+  .portrait-img{
+    width:100%;display:block;border-radius:2px;aspect-ratio:4/4.4;object-fit:cover;
+    background:linear-gradient(160deg,#22345A,#14213B);
+  }
+  .portrait-plate{
+    position:absolute;left:22px;bottom:22px;
+    background:#14213Bd9;backdrop-filter:blur(3px);
+    border-left:2px solid var(--gold);padding:12px 18px;
+  }
+  .portrait-plate .nm{font-family:var(--display);font-size:19px;color:var(--cream);line-height:1;}
+  .portrait-plate .rl{font-family:var(--util);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-top:7px;font-weight:600;}
+
+  /* ---------- positioning band (cream) ---------- */
+  .band{background:var(--cream);color:var(--ink);padding:96px 0;}
+  .band .inner{max-width:880px;}
+  .band .kicker{
+    font-family:var(--util);font-size:12px;font-weight:600;letter-spacing:.22em;
+    text-transform:uppercase;color:#B08F32;display:flex;align-items:center;gap:14px;margin-bottom:30px;
+  }
+  .band .ticks span{background:var(--gold);}
+  .band p{
+    font-family:var(--body);
+    font-size:clamp(1.35rem,2.5vw,1.92rem);
+    line-height:1.42;
+    color:var(--ink);
+    font-weight:400;
+  }
+  .band p .hl{color:#9C7C22;font-style:italic;font-weight:500;}
+  .band .sig{
+    font-family:var(--display);font-size:1.15rem;color:var(--navy);margin-top:34px;
+    display:flex;align-items:baseline;gap:14px;
+  }
+  .band .sig::before{content:"";width:38px;height:1px;background:var(--gold);align-self:center;}
+
+  /* ---------- stats (navy) ---------- */
+  .stats{background:var(--navy-deep);padding:80px 0;border-bottom:1px solid #ffffff10;}
+  .stats-head{margin-bottom:52px;}
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;}
+  .stat{padding:6px 30px;border-left:1px solid #ffffff17;}
+  .stat:first-child{padding-left:0;border-left:none;}
+  .stat .num{font-family:var(--display);font-size:clamp(2.4rem,3.6vw,3.1rem);color:var(--gold);line-height:1;}
+  .stat .lbl{font-family:var(--util);font-size:13px;letter-spacing:.03em;color:#D8D2C6cc;margin-top:16px;line-height:1.45;}
+  .stat .sub{font-family:var(--util);font-size:11.5px;letter-spacing:.02em;color:#8f97ab;margin-top:8px;line-height:1.4;}
+
+  /* ---------- projects (cream) ---------- */
+  .work{background:var(--cream);color:var(--ink);padding:96px 0;}
+  .work .kicker{
+    font-family:var(--util);font-size:12px;font-weight:600;letter-spacing:.22em;
+    text-transform:uppercase;color:#B08F32;display:flex;align-items:center;gap:14px;margin-bottom:16px;
+  }
+  .work h2{font-family:var(--display);font-weight:400;font-size:clamp(2rem,3.4vw,2.9rem);color:var(--navy);line-height:1.08;max-width:20ch;margin-bottom:56px;}
+  .proj{
+    display:grid;grid-template-columns:auto 1fr;gap:40px;
+    padding:34px 0;border-top:1px solid #1B2A4A26;
+  }
+  .proj:last-child{border-bottom:1px solid #1B2A4A26;}
+  .proj .tag{font-family:var(--util);font-size:11.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#9C7C22;padding-top:6px;white-space:nowrap;}
+  .proj h3{font-family:var(--display);font-weight:400;font-size:1.5rem;color:var(--navy);margin-bottom:12px;line-height:1.15;}
+  .proj p{font-family:var(--body);font-size:1.02rem;color:#33405Ce8;max-width:64ch;}
+  .proj .out{display:inline-block;margin-top:14px;font-family:var(--util);font-size:13px;font-weight:500;color:#9C7C22;letter-spacing:.01em;}
+  .proj .out::before{content:"→ ";}
+
+  /* ---------- closing cta (navy) ---------- */
+  .closing{
+    background:
+      radial-gradient(100% 120% at 15% 100%, #24365e 0%, rgba(36,54,94,0) 60%),
+      var(--navy);
+    padding:104px 0;text-align:center;
+  }
+  .closing .ticks{justify-content:center;margin:0 auto 26px;}
+  .closing h2{font-family:var(--display);font-weight:400;font-size:clamp(2.1rem,4vw,3.3rem);color:var(--cream);line-height:1.08;max-width:18ch;margin:0 auto 34px;}
+  .closing .btn-gold{font-size:15px;padding:16px 34px;}
+  .closing .sub{font-family:var(--body);color:#EDE7DBb0;margin-top:22px;font-size:1.02rem;}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--navy-deep);border-top:1px solid #ffffff12;padding:34px 0;}
+  .foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;
+    font-family:var(--util);font-size:12.5px;letter-spacing:.03em;color:#8f97ab;}
+  .foot a{color:#C9C3B6;text-decoration:none;}
+  .foot a:hover{color:var(--gold);}
+
+  /* ---------- motion ---------- */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease;}
+  .reveal.in{opacity:1;transform:none;}
+  .d1{transition-delay:.05s;}.d2{transition-delay:.13s;}.d3{transition-delay:.21s;}.d4{transition-delay:.29s;}
+
+  a:focus-visible,.btn:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+
+  @media (max-width:900px){
+    .wrap{padding:0 24px;}
+    .hero-grid{grid-template-columns:1fr;gap:48px;padding:50px 0 66px;}
+    .portrait{max-width:360px;}
+    .stats-grid{grid-template-columns:1fr 1fr;gap:36px 0;}
+    .stat{padding:6px 26px;}
+    .stat:nth-child(3){border-left:none;padding-left:0;}
+    .proj{grid-template-columns:1fr;gap:10px;}
+    .band,.work,.stats,.closing{padding:66px 0;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none;}
+    html{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+
+  <div class="hero">
+    <div class="wrap">
+      <div class="topbar reveal in">
+        <div class="wordmark">Advient<small>Advisors</small></div>
+        <a href="#" class="nav-cta">Schedule a consultation</a>
+      </div>
+
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow reveal in d1">
+            <span class="ticks"><span></span><span></span><span></span><span></span><span></span></span>
+            Advient Advisors
+          </div>
+          <h1 class="reveal in d2">We turn AI ambition<br>into <span class="accent">advantage.</span></h1>
+          <p class="lede reveal in d3">For companies that think big and have no patience for slideware. Twenty-five years turning bold ideas into systems that run.</p>
+          <div class="hero-actions reveal in d4">
+            <a href="#" class="btn btn-gold">Schedule a consultation</a>
+            <a href="#work" class="btn btn-ghost">View recent work</a>
+          </div>
+          <div class="creds reveal in d4">
+            <span>MIT Media Lab PhD</span>
+            <span>25+ Years in AI</span>
+            <span>Founder &amp; CEO</span>
+            <span>3 AI Companies</span>
+          </div>
+        </div>
+
+        <div class="portrait reveal in d3">
+          <div class="portrait-frame">
+            <img class="portrait-img" src="https://www.advientadvisors.com/images/cory-kidd-headshot.jpg" alt="Dr. Cory Kidd" onerror="this.style.display='none'">
+            <div class="portrait-plate">
+              <div class="nm">Dr. Cory Kidd</div>
+              <div class="rl">Founder &amp; CEO</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- positioning band -->
+  <section class="band">
+    <div class="wrap">
+      <div class="inner">
+        <div class="kicker reveal">
+          <span class="ticks"><span></span><span></span><span></span><span></span><span></span></span>
+          The difference
+        </div>
+        <p class="reveal d1">Most AI advisors hand you a strategy and step back. Advient is led by an operator who has <span class="hl">founded and run three AI companies</span> — so the person who assesses where you're ready is the same one who architects and ships the system. Senior judgment from boardroom to production, in the industries where the stakes are highest and compliance is hardest.</p>
+        <div class="sig reveal d2">The deliverable isn't a deck. It's a working capability your competitors don't have.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- stats -->
+  <section class="stats">
+    <div class="wrap">
+      <div class="stats-grid">
+        <div class="stat reveal d1">
+          <div class="num">MIT</div>
+          <div class="lbl">Media Lab PhD in AI &amp; Psychology</div>
+        </div>
+        <div class="stat reveal d2">
+          <div class="num">3</div>
+          <div class="lbl">AI companies founded &amp; led</div>
+          <div class="sub">$10M+ in venture funding raised</div>
+        </div>
+        <div class="stat reveal d3">
+          <div class="num">25+</div>
+          <div class="lbl">Years commercializing AI</div>
+        </div>
+        <div class="stat reveal d4">
+          <div class="num">3</div>
+          <div class="lbl">U.S. patents in AI &amp; robotics</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- work -->
+  <section class="work" id="work">
+    <div class="wrap">
+      <div class="kicker reveal">
+        <span class="ticks"><span></span><span></span><span></span><span></span><span></span></span>
+        Recent work
+      </div>
+      <h2 class="reveal d1">Strategy and build, in one operator.</h2>
+
+      <div class="proj reveal">
+        <div class="tag">Pharma · Commercial</div>
+        <div>
+          <h3>From AI readiness to a deployed forecasting system</h3>
+          <p>A mid-size pharma commercial team had executive appetite for AI but no path from experimentation to production. We benchmarked readiness, prioritized use cases in a leadership workshop, delivered a phased roadmap, then architected and shipped the top-priority system — a market-optimization and demand-forecasting engine surfacing demand shifts weeks earlier than traditional signals.</p>
+          <span class="out">Assessment converted into a build, then ongoing operational support</span>
+        </div>
+      </div>
+
+      <div class="proj reveal">
+        <div class="tag">Maritime · Oil &amp; Gas</div>
+        <div>
+          <h3>Zero to deployed enterprise AI in an industrial workforce</h3>
+          <p>A ~$1.5B maritime shipping company wanted to stay lean by using AI instead of adding headcount — but no one in leadership had used it. We trained the C-suite, stood up the governance layer, and built the adoption engine. ~165 shore-based employees onboarded at 100% voluntary participation.</p>
+          <span class="out">Fixed-fee program converted into a retainer and an expanded mandate</span>
+        </div>
+      </div>
+
+      <div class="proj reveal">
+        <div class="tag">Pharma · Market Research</div>
+        <div>
+          <h3>Turning an early AI lead into commercial scale</h3>
+          <p>A pharma market research firm was an early mover on AI, ahead of its peers. In a focused six-week assessment we delivered a prioritized plan to scale adoption, sharpened the go-to-market model, and put a measurement framework in place tied to the company's own targets — packaged as a 30/60/90-day roadmap the CEO could act on immediately.</p>
+          <span class="out">Extended into an ongoing monthly advisory engagement</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- closing -->
+  <section class="closing">
+    <div class="wrap">
+      <div class="ticks reveal"><span></span><span></span><span></span><span></span><span></span></div>
+      <h2 class="reveal d1">Ready to turn AI ambition into advantage?</h2>
+      <a href="#" class="btn btn-gold reveal d2">Schedule a consultation</a>
+      <div class="sub reveal d2">Let's talk about what to build first.</div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap foot">
+      <div>© 2026 Advient Advisors LLC</div>
+      <div><a href="mailto:cory@advientadvisors.com">cory@advientadvisors.com</a> &nbsp;·&nbsp; <a href="#">LinkedIn</a></div>
+    </div>
+  </footer>
+
+<script>
+  const io=new IntersectionObserver((es)=>{
+    es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+  },{threshold:.15});
+  document.querySelectorAll('.reveal:not(.in)').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
