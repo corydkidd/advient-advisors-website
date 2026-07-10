@@ -99,6 +99,9 @@ export default function CaseStudies() {
         >
           <div className="flex items-center gap-3.5 mb-5">
             <Ticks />
+            <span className="font-util text-xs font-semibold uppercase tracking-[0.22em] text-gold">
+              Recent work
+            </span>
           </div>
           <h2 className="font-display text-4xl lg:text-5xl text-cream leading-[1.08] mb-4">
             Recent Projects

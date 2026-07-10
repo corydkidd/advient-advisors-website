@@ -31,6 +31,9 @@ export default function Differentiation() {
         >
           <div className="flex items-center gap-3.5 mb-5">
             <Ticks />
+            <span className="font-util text-xs font-semibold uppercase tracking-[0.22em] text-[color:var(--gold-kicker)]">
+              Why it works
+            </span>
           </div>
           <h2 className="font-display text-4xl lg:text-5xl text-navy leading-[1.08]">
             Why This Works Differently

@@ -16,6 +16,9 @@ export default function PositioningBand() {
             transition={{ duration: 0.6 }}
           >
             <Ticks />
+            <span className="font-util text-xs font-semibold uppercase tracking-[0.22em] text-[color:var(--gold-kicker)]">
+              The difference
+            </span>
           </motion.div>
 
           <motion.p
