@@ -55,15 +55,15 @@ export default function Hero() {
               className="text-2xl lg:text-3xl font-semibold text-text-primary mb-6"
               variants={heroVariants}
             >
-              Enterprise AI Strategy & Implementation
+              We turn AI ambition into advantage.
             </motion.p>
 
             <motion.p
               className="text-lg text-text-secondary max-w-2xl mb-8 leading-relaxed"
               variants={heroVariants}
             >
-              I help pharmaceutical, maritime, and industrial companies implement AI strategies
-              that generate measurable ROI—not decks, not roadmaps, working systems.
+              For companies that think big and have no patience for slideware. Twenty-five
+              years turning bold ideas into systems that run.
             </motion.p>
 
             <motion.div
@@ -94,9 +94,9 @@ export default function Hero() {
               <span className="text-text-muted">•</span>
               <span>25+ Years in AI</span>
               <span className="text-text-muted">•</span>
-              <span>Former CEO</span>
+              <span>Founder & CEO</span>
               <span className="text-text-muted">•</span>
-              <span>Enterprise Consultant</span>
+              <span>3 AI Companies</span>
             </motion.div>
           </motion.div>
 

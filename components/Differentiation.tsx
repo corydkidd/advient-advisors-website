@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { X, Check } from 'lucide-react';
 
 const traditional = [
-  'Strategy firms deliver roadmaps and leave',
+  'Strategy firms hand over a deck and leave',
   'Junior analysts research best practices',
   '"Digital transformation" frameworks',
   'You implement (or it dies)',
@@ -13,7 +13,7 @@ const traditional = [
 const advient = [
   "I've been a CEO, built products at scale, and understand both the boardroom and the codebase",
   'Direct engagement with your team - no intermediaries',
-  'Concrete AI implementations with measurable ROI',
+  'Working AI systems, built and measured against your own targets',
   'Partnership through deployment',
 ];
 
@@ -98,9 +98,12 @@ export default function Differentiation() {
         >
           <blockquote className="text-xl lg:text-2xl text-text-primary italic leading-relaxed">
             <span className="text-4xl text-cyan-primary leading-none mr-2">&ldquo;</span>
-            I don&apos;t just recommend AI strategies. I&apos;ve spent 25 years building and
-            commercializing AI products in regulated industries. I know what works because
-            I&apos;ve done it.
+            I don&apos;t hand clients a strategy and walk away. I&apos;ve spent 25 years building
+            and shipping AI in the industries where it&apos;s hardest to get right, and I stay
+            in it until the system is running.&rdquo;
+            <footer className="mt-4 text-base not-italic text-text-secondary">
+              — Cory Kidd, Ph.D.
+            </footer>
           </blockquote>
         </motion.div>
       </div>

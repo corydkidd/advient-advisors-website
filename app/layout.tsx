@@ -18,7 +18,7 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   title: 'Dr. Cory Kidd - Enterprise AI Strategy & Implementation | Advient Advisors',
   description:
-    'We help pharmaceutical, maritime, and industrial companies implement AI strategies that generate measurable ROI. MIT PhD with 25+ years building AI products.',
+    'We turn AI ambition into advantage for pharmaceutical, maritime, and industrial companies — working systems that run, not slideware. MIT PhD with 25+ years building AI.',
   keywords: [
     'AI consultant',
     'enterprise AI strategy',
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Dr. Cory Kidd - Enterprise AI Strategy & Implementation',
     description:
-      'Enterprise AI consultant helping pharma, maritime, and industrial companies implement working systems.',
+      'AI advisor and operator helping pharma, maritime, and industrial companies turn ambition into working systems that run.',
     url: 'https://www.advientadvisors.com',
     siteName: 'Advient Advisors',
     locale: 'en_US',
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Dr. Cory Kidd - Enterprise AI Strategy & Implementation',
     description:
-      'Enterprise AI consultant with 25+ years building AI products for regulated industries.',
+      'Turning AI ambition into advantage — 25+ years building and shipping AI systems for regulated industries.',
     images: ['/api/og'],
   },
   robots: {

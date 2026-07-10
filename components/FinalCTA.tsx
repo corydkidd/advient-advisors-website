@@ -14,12 +14,12 @@ export default function FinalCTA() {
           transition={{ duration: 0.6 }}
         >
           <h2 className="font-heading text-4xl lg:text-5xl font-bold text-text-primary mb-6">
-            Ready to Implement AI That Delivers Results?
+            Ready to turn AI ambition into advantage?
           </h2>
 
           <p className="text-xl text-text-secondary leading-relaxed mb-10">
-            Let&apos;s discuss your specific challenges and how AI can drive measurable
-            outcomes for your organization.
+            Let&apos;s talk about what to build first — your specific challenges and the
+            systems that would move the needle for your organization.
           </p>
 
           <motion.a

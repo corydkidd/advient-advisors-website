@@ -8,13 +8,13 @@ const services = [
     icon: Target,
     title: 'AI Strategy',
     description:
-      "Not decks. Not roadmaps. Implementation plans with accountability metrics and timelines. We've run companies and know what works in the real world.",
+      "Not decks that gather dust. A clear roadmap you can act on — then the system built to match. We've run companies and know what works in the real world.",
   },
   {
     icon: FlaskConical,
     title: 'Proof of Concept',
     description:
-      'Validate AI use cases before committing to full deployment. Real prototypes, real data, real results. Reduce risk and prove ROI before scaling.',
+      'Validate AI use cases before committing to full deployment. Real prototypes, real data, real results. Reduce risk and prove it works before you scale.',
   },
   {
     icon: Workflow,

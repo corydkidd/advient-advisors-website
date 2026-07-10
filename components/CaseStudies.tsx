@@ -5,54 +5,56 @@ import { motion } from 'framer-motion';
 const caseStudies = [
   {
     category: 'PHARMACEUTICAL AI STRATEGY',
-    company: 'Mid-Size Pharmaceutical Company',
-    title: 'Comprehensive AI Strategy & Proof of Concept',
+    company: 'Mid-Size Pharma — Commercial',
+    title: 'From Readiness Assessment to Shipped Forecasting Engine',
     description:
-      'Built two parallel workstreams: organizational readiness assessment and predictive analytics proof of concept for market optimization.',
+      'A mid-size pharma commercial team had executive appetite for AI but no path from experimentation to production.',
     deliverables: [
-      'Benchmarking analysis across 8 readiness pillars vs. industry peers',
-      'Strategic roadmap for enterprise-wide AI implementation',
-      'Proof of concept: Predictive model achieving 8-10 week advance warning for market demand surges',
-      'Successfully demonstrated ROI, leading to full-scale implementation contract',
+      'Benchmarked readiness',
+      'Facilitated a leadership workshop to prioritize use cases',
+      'Delivered a phased roadmap',
+      'Architected and shipped the top-priority system: a market-optimization and demand-forecasting engine integrating structured and unstructured data',
+      'Interactive geographic dashboard and automated alerts — surfacing demand shifts weeks earlier than traditional market signals',
     ],
     outcome: {
       label: 'Outcome:',
-      text: 'Client moved from assessment to full deployment based on proven concept',
+      text: 'Assessment converted into a build engagement, then ongoing operational support.',
     },
   },
   {
-    category: 'MARITIME ENTERPRISE AI TRAINING',
-    company: '$1.5B Maritime & Energy Company',
+    category: 'MARITIME ENTERPRISE AI',
+    company: '~$1.5B Maritime Shipping',
     title: 'Executive Training & Organization-Wide AI Adoption',
     description:
-      'Designed and delivered comprehensive AI training program for shore-based employees in organization transitioning to AI-augmented operations.',
+      'A ~$1.5B maritime shipping company (roughly 1,800 employees, most at sea) wanted to stay lean by using AI instead of adding headcount — but no one in leadership had used it.',
     deliverables: [
-      'Executive workshops for C-suite leadership',
-      'Company-wide GenAI training for ~165 shore-based employees (100% voluntary participation rate)',
-      'Department-specific tailored training programs',
-      'AI analyst tool development for corporate development function',
-      'Ongoing strategic advisory for AI implementation',
+      'Trained the senior leadership team directly',
+      'Ran a workshop to surface high-value use cases',
+      'Deployed an enterprise-grade AI platform for a security-sensitive industry',
+      'Stood up the governance layer and built the adoption engine',
+      '~165 shore-based employees onboarded at 100% voluntary participation',
     ],
-    focus: {
-      label: 'Focus:',
-      text: 'Practical AI implementation for workflow automation, competitive intelligence, and operational efficiency',
+    outcome: {
+      label: 'Outcome:',
+      text: 'The fixed-fee program converted into an ongoing advisory retainer and a materially expanded mandate the following year.',
     },
   },
   {
-    category: 'BIOTECHNOLOGY SALES TRANSFORMATION',
-    company: 'Food Safety & Microbiology Company',
-    title: 'AI Strategy Keynotes for Global Sales Organization',
+    category: 'PHARMA AI GO-TO-MARKET',
+    company: 'Pharma Market Research',
+    title: 'Scaling an Early AI Head Start into Commercial Growth',
     description:
-      'Delivered keynote presentations at annual sales meetings for both US and EMEA divisions, focusing on practical AI applications for sales acceleration.',
+      'A pharma market research firm was an early mover on AI, with a proprietary, differentiated capability in daily use ahead of its peers. The priority was converting that head start into commercial scale.',
     deliverables: [
-      'AI-powered customer targeting and territory optimization',
-      'LLM applications for technical sales communications',
-      'Competitive intelligence automation',
-      'Implementation framework for sales organizations',
+      'Ran a focused six-week assessment across the leadership team',
+      'Delivered a prioritized plan to scale adoption',
+      'Sharpened the go-to-market model for its AI-enabled products',
+      "Put a shared measurement framework in place tied to the company's own targets",
+      'Packaged the work as a 30/60/90-day roadmap the CEO could act on immediately',
     ],
-    audience: {
-      label: 'Audience:',
-      text: '90+ sales representatives, software team, C-suite leadership',
+    outcome: {
+      label: 'Outcome:',
+      text: 'The CEO extended the work into an ongoing monthly advisory engagement.',
     },
   },
   {
@@ -146,24 +148,6 @@ export default function CaseStudies() {
                     {study.outcome.label}
                   </span>
                   {study.outcome.text}
-                </div>
-              )}
-
-              {study.focus && (
-                <div className="mt-4 p-3 bg-cyan-primary bg-opacity-5 border-l-4 border-cyan-primary rounded text-sm text-text-secondary leading-relaxed">
-                  <span className="font-bold text-cyan-primary mr-2">
-                    {study.focus.label}
-                  </span>
-                  {study.focus.text}
-                </div>
-              )}
-
-              {study.audience && (
-                <div className="mt-4 p-3 bg-cyan-primary bg-opacity-5 border-l-4 border-cyan-primary rounded text-sm text-text-secondary leading-relaxed">
-                  <span className="font-bold text-cyan-primary mr-2">
-                    {study.audience.label}
-                  </span>
-                  {study.audience.text}
                 </div>
               )}
 

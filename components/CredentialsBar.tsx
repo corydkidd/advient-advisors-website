@@ -12,7 +12,7 @@ const credentials = [
   {
     icon: Building2,
     title: 'AI ENTREPRENEUR',
-    description: '2 companies founded\n$10M+ in VC/PE funding',
+    description: '3 AI companies founded & led\n$10M+ in venture funding raised',
   },
   {
     icon: Zap,

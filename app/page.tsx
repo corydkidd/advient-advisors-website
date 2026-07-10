@@ -1,4 +1,5 @@
 import Hero from '@/components/Hero';
+import PositioningBand from '@/components/PositioningBand';
 import CredentialsBar from '@/components/CredentialsBar';
 import Services from '@/components/Services';
 import CaseStudies from '@/components/CaseStudies';
@@ -11,6 +12,7 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <PositioningBand />
       <CredentialsBar />
       <Services />
       <CaseStudies />

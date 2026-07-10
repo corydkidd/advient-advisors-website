@@ -48,7 +48,7 @@ export default function Footer() {
         {/* Copyright */}
         <div className="pt-8 border-t border-border-subtle text-center">
           <p className="text-sm text-text-muted">
-            &copy; 2025 Advient Advisors LLC. All rights reserved.
+            &copy; 2026 Advient Advisors LLC. All rights reserved.
             {' '}&middot;{' '}
             <Link
               href="/privacy"
