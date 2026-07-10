@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import ParticleBackground from './ParticleBackground';
+import Ticks from './Ticks';
 
 const heroVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -11,9 +11,9 @@ const heroVariants = {
     y: 0,
     transition: {
       duration: 0.8,
-      ease: "easeOut"
-    }
-  }
+      ease: 'easeOut',
+    },
+  },
 };
 
 const containerVariants = {
@@ -21,19 +21,27 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.2,
-      delayChildren: 0.3
-    }
-  }
+      staggerChildren: 0.12,
+      delayChildren: 0.15,
+    },
+  },
 };
+
+const credentials = [
+  'MIT Media Lab PhD',
+  '25+ Years in AI',
+  'Founder & CEO',
+  '3 AI Companies',
+];
 
 export default function Hero() {
   return (
-    <section id="hero" className="relative min-h-screen flex items-center bg-navy-deep overflow-hidden py-16">
-      <ParticleBackground />
-
+    <section
+      id="hero"
+      className="relative overflow-hidden border-b border-white/10 bg-hero-gradient"
+    >
       <div className="container relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-[60%_40%] gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-[1.15fr_0.85fr] gap-12 lg:gap-16 items-center py-16 lg:py-24">
           {/* Left Column - Content */}
           <motion.div
             className="hero-content"
@@ -41,25 +49,23 @@ export default function Hero() {
             initial="hidden"
             animate="visible"
           >
-            <motion.div variants={heroVariants}>
-              <p className="font-heading text-sm font-semibold tracking-widest text-cyan-primary uppercase mb-3">
-                Advient Advisors
-              </p>
-              <h1 className="font-heading text-5xl lg:text-6xl font-bold leading-tight text-text-primary mb-4">
-                Dr. Cory Kidd
-              </h1>
-              <div className="w-32 h-1 bg-gradient-to-r from-cyan-primary to-transparent mb-4"></div>
-            </motion.div>
-
-            <motion.p
-              className="text-2xl lg:text-3xl font-semibold text-text-primary mb-6"
+            <motion.div
+              className="flex items-center gap-3.5 font-util text-xs font-semibold uppercase tracking-[0.22em] text-gold"
               variants={heroVariants}
             >
-              We turn AI ambition into advantage.
-            </motion.p>
+              <Ticks />
+              Advient Advisors
+            </motion.div>
+
+            <motion.h1
+              className="font-display font-normal text-cream mt-7 leading-[1.02] tracking-[-0.005em] text-[clamp(2.7rem,5.4vw,4.55rem)]"
+              variants={heroVariants}
+            >
+              We turn AI ambition into <span className="text-gold">advantage.</span>
+            </motion.h1>
 
             <motion.p
-              className="text-lg text-text-secondary max-w-2xl mb-8 leading-relaxed"
+              className="font-body text-cream/80 max-w-[34ch] mt-6 leading-[1.5] text-[clamp(1.05rem,1.5vw,1.24rem)]"
               variants={heroVariants}
             >
               For companies that think big and have no patience for slideware. Twenty-five
@@ -67,72 +73,79 @@ export default function Hero() {
             </motion.p>
 
             <motion.div
-              className="flex flex-col sm:flex-row gap-4 mb-10"
+              className="flex flex-col sm:flex-row gap-3.5 mt-9"
               variants={heroVariants}
             >
               <a
                 href="https://calendar.app.google/BrtTXrLKioutTtf77"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-8 py-4 bg-cyan-primary text-navy-deep font-semibold text-lg rounded-lg transition-all duration-300 hover:shadow-cyan-glow-lg hover:-translate-y-0.5 shadow-cyan-glow"
+                className="inline-flex items-center justify-center px-7 py-4 bg-gold text-navy-deep font-util font-semibold text-sm tracking-[0.01em] rounded-sm transition-all duration-300 hover:bg-gold-soft hover:-translate-y-0.5"
               >
-                Schedule Consultation
+                Schedule a Consultation
               </a>
               <a
                 href="#case-studies"
-                className="inline-flex items-center justify-center px-8 py-4 bg-transparent text-text-primary font-semibold text-lg border-2 border-border-medium rounded-lg transition-all duration-300 hover:border-cyan-primary hover:text-cyan-primary hover:shadow-cyan-glow"
+                className="inline-flex items-center justify-center px-7 py-4 bg-transparent text-cream font-util font-semibold text-sm tracking-[0.01em] border border-white/20 rounded-sm transition-all duration-300 hover:border-cream"
               >
                 View Recent Work
               </a>
             </motion.div>
 
             <motion.div
-              className="flex flex-wrap gap-3 items-center text-sm text-text-secondary"
+              className="flex flex-wrap items-center mt-11 font-util text-[12.5px] font-medium uppercase tracking-[0.04em] text-cream-dim/70"
               variants={heroVariants}
             >
-              <span>MIT Media Lab PhD</span>
-              <span className="text-text-muted">•</span>
-              <span>25+ Years in AI</span>
-              <span className="text-text-muted">•</span>
-              <span>Founder & CEO</span>
-              <span className="text-text-muted">•</span>
-              <span>3 AI Companies</span>
+              {credentials.map((cred, i) => (
+                <span key={cred} className="flex items-center">
+                  {cred}
+                  {i < credentials.length - 1 && (
+                    <span
+                      className="mx-4 inline-block w-1 h-1 rounded-full bg-gold/90"
+                      aria-hidden="true"
+                    />
+                  )}
+                </span>
+              ))}
             </motion.div>
           </motion.div>
 
-          {/* Right Column - Image */}
+          {/* Right Column - Portrait */}
           <motion.div
             className="hero-image order-first lg:order-last"
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.5 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.35, ease: 'easeOut' }}
           >
-            <div className="relative w-full max-w-md mx-auto">
-              <div className="relative z-10">
+            <div className="relative w-full max-w-sm mx-auto lg:mx-0 lg:ml-auto">
+              {/* Frame with gold corner brackets */}
+              <div className="relative p-2.5 border border-white/[0.12] rounded-[3px] bg-gradient-to-br from-white/[0.04] to-transparent">
                 <Image
                   src="/images/cory-kidd-headshot.jpg"
                   alt="Dr. Cory Kidd"
                   width={500}
                   height={625}
-                  className="rounded-xl w-full h-auto"
+                  className="w-full h-auto rounded-sm object-cover"
                   priority
                 />
+
+                {/* Gold corner brackets */}
+                <div className="absolute -top-px -left-px w-6 h-6 border-t-[1.5px] border-l-[1.5px] border-gold" />
+                <div className="absolute -bottom-px -right-px w-6 h-6 border-b-[1.5px] border-r-[1.5px] border-gold" />
+
+                {/* Navy name plate */}
+                <div className="absolute left-5 bottom-5 bg-navy-deep/85 backdrop-blur-[3px] border-l-2 border-gold px-[18px] py-3">
+                  <div className="font-display text-lg text-cream leading-none">
+                    Dr. Cory Kidd
+                  </div>
+                  <div className="font-util text-[10.5px] font-semibold uppercase tracking-[0.16em] text-gold mt-1.5">
+                    Founder &amp; CEO
+                  </div>
+                </div>
               </div>
-
-              {/* Cyan glow border */}
-              <div className="absolute -top-2 -left-2 -right-2 -bottom-2 border-2 border-cyan-primary rounded-2xl shadow-cyan-glow-lg z-0 pointer-events-none"></div>
-
-              {/* Corner decorations */}
-              <div className="absolute -top-3 -left-3 w-10 h-10 border-2 border-cyan-primary border-r-0 border-b-0 z-20"></div>
-              <div className="absolute -bottom-3 -right-3 w-10 h-10 border-2 border-cyan-primary border-l-0 border-t-0 z-20"></div>
             </div>
           </motion.div>
         </div>
-      </div>
-
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-2xl text-cyan-primary animate-bounce">
-        <span>↓</span>
       </div>
     </section>
   );

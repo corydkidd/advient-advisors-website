@@ -1,14 +1,44 @@
 import { ImageResponse } from 'next/og';
-import { NextRequest } from 'next/server';
 
 export const runtime = 'edge';
 
-export async function GET(req: NextRequest) {
+// Brand palette
+const NAVY = '#1B2A4A';
+const NAVY_DEEP = '#14213B';
+const CREAM = '#F8F4EE';
+const CREAM_MUTED = '#CFC8BA';
+const GOLD = '#C9A84C';
+
+// Calibration-tick signature — five gold bars of varying height
+function Ticks() {
+  const heights = [9, 15, 23, 13, 18];
+  return (
+    <div style={{ display: 'flex', alignItems: 'flex-end', height: 24 }}>
+      {heights.map((h, i) => (
+        <div
+          key={i}
+          style={{
+            width: 3,
+            height: h,
+            background: GOLD,
+            marginRight: i < heights.length - 1 ? 5 : 0,
+          }}
+        />
+      ))}
+    </div>
+  );
+}
+
+export async function GET() {
   try {
-    // Load the headshot image
-    const imageData = await fetch(
-      new URL('../../../public/images/cory-kidd-headshot.jpg', import.meta.url)
-    ).then((res) => res.arrayBuffer());
+    const [gloock, instrumentSans] = await Promise.all([
+      fetch(new URL('./fonts/Gloock-Regular.ttf', import.meta.url)).then((r) =>
+        r.arrayBuffer()
+      ),
+      fetch(new URL('./fonts/InstrumentSans-SemiBold.ttf', import.meta.url)).then((r) =>
+        r.arrayBuffer()
+      ),
+    ]);
 
     return new ImageResponse(
       (
@@ -17,13 +47,17 @@ export async function GET(req: NextRequest) {
             height: '100%',
             width: '100%',
             display: 'flex',
-            flexDirection: 'row',
-            alignItems: 'center',
-            backgroundColor: '#0A1628',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'flex-start',
+            padding: '80px',
+            backgroundColor: NAVY_DEEP,
+            backgroundImage: `linear-gradient(180deg, ${NAVY} 0%, ${NAVY_DEEP} 100%)`,
             position: 'relative',
+            fontFamily: 'Instrument Sans',
           }}
         >
-          {/* Particle Network Pattern Background */}
+          {/* Radial navy-soft lift in the top-right corner (matches hero) */}
           <div
             style={{
               position: 'absolute',
@@ -31,140 +65,121 @@ export async function GET(req: NextRequest) {
               left: 0,
               right: 0,
               bottom: 0,
-              opacity: 0.15,
-              background: 'radial-gradient(circle at 20% 30%, rgba(0, 217, 255, 0.3) 0%, transparent 50%), radial-gradient(circle at 80% 70%, rgba(0, 217, 255, 0.2) 0%, transparent 50%)',
+              display: 'flex',
+              backgroundImage:
+                'radial-gradient(120% 90% at 82% 8%, #24365e 0%, rgba(36,54,94,0) 55%)',
             }}
           />
 
-          {/* Left Side - Text Content (60%) */}
+          {/* Gold corner brackets echoing the portrait frame */}
+          <div
+            style={{
+              position: 'absolute',
+              top: 44,
+              left: 44,
+              width: 46,
+              height: 46,
+              borderTop: `3px solid ${GOLD}`,
+              borderLeft: `3px solid ${GOLD}`,
+              display: 'flex',
+            }}
+          />
+          <div
+            style={{
+              position: 'absolute',
+              bottom: 44,
+              right: 44,
+              width: 46,
+              height: 46,
+              borderBottom: `3px solid ${GOLD}`,
+              borderRight: `3px solid ${GOLD}`,
+              display: 'flex',
+            }}
+          />
+
+          {/* Top — tick cluster + eyebrow */}
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              position: 'relative',
+            }}
+          >
+            <Ticks />
+            <div
+              style={{
+                marginLeft: 16,
+                fontFamily: 'Instrument Sans',
+                fontSize: 24,
+                fontWeight: 600,
+                letterSpacing: '0.22em',
+                textTransform: 'uppercase',
+                color: GOLD,
+              }}
+            >
+              Advient Advisors
+            </div>
+          </div>
+
+          {/* Center — dominant tagline (two lines, "advantage" in gold) */}
           <div
             style={{
               display: 'flex',
               flexDirection: 'column',
-              justifyContent: 'center',
-              width: '60%',
-              padding: '80px',
+              fontFamily: 'Gloock',
+              fontSize: 78,
+              lineHeight: 1.05,
+              color: CREAM,
+              margin: '30px 0 46px',
               position: 'relative',
-              zIndex: 10,
             }}
           >
-            {/* Advient Advisors */}
-            <div
-              style={{
-                fontSize: '24px',
-                fontWeight: 600,
-                letterSpacing: '0.2em',
-                color: '#00D9FF',
-                marginBottom: '24px',
-                fontFamily: 'system-ui, sans-serif',
-                display: 'flex',
-              }}
-            >
-              ADVIENT ADVISORS
-            </div>
-
-            {/* Name */}
-            <div
-              style={{
-                fontSize: '64px',
-                fontWeight: 700,
-                color: '#E8E9ED',
-                lineHeight: 1.1,
-                marginBottom: '16px',
-                fontFamily: 'system-ui, sans-serif',
-                display: 'flex',
-              }}
-            >
-              Dr. Cory Kidd
-            </div>
-
-            {/* Cyan Accent Line */}
-            <div
-              style={{
-                width: '120px',
-                height: '4px',
-                background: 'linear-gradient(90deg, #00D9FF 0%, transparent 100%)',
-                marginBottom: '32px',
-                display: 'flex',
-              }}
-            />
-
-            {/* Subtitle */}
-            <div
-              style={{
-                fontSize: '32px',
-                fontWeight: 600,
-                color: '#A0A4B0',
-                lineHeight: 1.3,
-                fontFamily: 'system-ui, sans-serif',
-                display: 'flex',
-                flexDirection: 'column',
-              }}
-            >
-              <span>Enterprise AI Strategy &</span>
-              <span>Implementation</span>
+            <div style={{ display: 'flex' }}>We turn AI ambition</div>
+            <div style={{ display: 'flex' }}>
+              <span style={{ color: CREAM }}>into&nbsp;</span>
+              <span style={{ color: GOLD }}>advantage.</span>
             </div>
           </div>
 
-          {/* Right Side - Headshot (40%) */}
+          {/* Bottom — gold hairline, name, tagline */}
           <div
             style={{
               display: 'flex',
-              width: '40%',
-              height: '100%',
-              alignItems: 'center',
-              justifyContent: 'center',
+              flexDirection: 'column',
               position: 'relative',
-              padding: '60px',
-              zIndex: 5,
             }}
           >
-            {/* Image Container */}
             <div
               style={{
-                position: 'relative',
+                width: 104,
+                height: 2,
+                background: GOLD,
+                marginBottom: 26,
                 display: 'flex',
-                width: '380px',
-                height: '475px',
+              }}
+            />
+            <div
+              style={{
+                fontFamily: 'Gloock',
+                fontSize: 30,
+                color: CREAM,
+                display: 'flex',
               }}
             >
-              {/* Main Image */}
-              <img
-                src={`data:image/jpeg;base64,${Buffer.from(imageData).toString('base64')}`}
-                style={{
-                  width: '100%',
-                  height: '100%',
-                  borderRadius: '12px',
-                  objectFit: 'cover',
-                }}
-                alt="Dr. Cory Kidd"
-              />
-
-              {/* Corner Frame Overlays */}
-              <div
-                style={{
-                  position: 'absolute',
-                  top: '-12px',
-                  left: '-12px',
-                  width: '40px',
-                  height: '40px',
-                  borderTop: '3px solid #00D9FF',
-                  borderLeft: '3px solid #00D9FF',
-                  display: 'flex',
-                }}
-              />
-              <div
-                style={{
-                  position: 'absolute',
-                  bottom: '-12px',
-                  right: '-12px',
-                  width: '40px',
-                  height: '40px',
-                  borderBottom: '3px solid #00D9FF',
-                  borderRight: '3px solid #00D9FF',
-                  display: 'flex',
-                }}
-              />
+              Dr. Cory Kidd, Ph.D.
+            </div>
+            <div
+              style={{
+                fontFamily: 'Instrument Sans',
+                fontSize: 20,
+                fontWeight: 600,
+                letterSpacing: '0.02em',
+                color: CREAM_MUTED,
+                marginTop: 10,
+                display: 'flex',
+              }}
+            >
+              Enterprise AI — built, not just advised
             </div>
           </div>
         </div>
@@ -172,6 +187,10 @@ export async function GET(req: NextRequest) {
       {
         width: 1200,
         height: 630,
+        fonts: [
+          { name: 'Gloock', data: gloock, weight: 400, style: 'normal' },
+          { name: 'Instrument Sans', data: instrumentSans, weight: 600, style: 'normal' },
+        ],
       }
     );
   } catch (e: any) {

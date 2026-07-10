@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Ticks from './Ticks';
 
 const caseStudies = [
   {
@@ -77,90 +78,92 @@ const caseStudies = [
   },
 ];
 
+function deliverablesLabel(deliverables: string[]) {
+  const first = deliverables[0];
+  if (first.includes('Pharma')) return 'Achievements:';
+  if (first.includes('Executive')) return 'Deliverables:';
+  if (first.includes('AI-powered')) return 'Content:';
+  return 'Deliverables:';
+}
+
 export default function CaseStudies() {
   return (
-    <section id="case-studies" className="py-24 bg-navy-medium">
+    <section id="case-studies" className="py-20 lg:py-24 bg-navy">
       <div className="container">
         <motion.div
-          className="text-center max-w-3xl mx-auto mb-16"
+          className="max-w-3xl mb-14"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="font-heading text-4xl lg:text-5xl font-bold text-text-primary mb-4">
+          <div className="flex items-center gap-3.5 mb-5">
+            <Ticks />
+            <span className="font-util text-xs font-semibold uppercase tracking-[0.22em] text-gold">
+              Recent work
+            </span>
+          </div>
+          <h2 className="font-display text-4xl lg:text-5xl text-cream leading-[1.08] mb-4">
             Recent Projects
           </h2>
-          <p className="text-lg text-text-secondary leading-relaxed">
+          <p className="font-body text-lg text-cream/80 leading-relaxed">
             Results-driven AI implementation across regulated industries
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {caseStudies.map((study, index) => (
-            <motion.article
-              key={study.title}
-              className="bg-charcoal p-8 rounded-xl border border-border-subtle transition-all duration-300 hover:border-cyan-primary hover:shadow-cyan-glow flex flex-col gap-4"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-            >
-              <div className="mb-2">
-                <span className="inline-block text-xs font-bold uppercase tracking-wider text-gold-accent px-3 py-2 bg-gold-accent bg-opacity-10 rounded">
+        <div>
+          {caseStudies.map((study, index) => {
+            const accent = study.outcome ?? study.demonstrates;
+            return (
+              <motion.article
+                key={study.title}
+                className="grid grid-cols-1 lg:grid-cols-[220px_1fr] gap-4 lg:gap-10 py-8 border-t border-white/[0.14] last:border-b last:border-white/[0.14]"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.08 }}
+              >
+                <div className="font-util text-[11.5px] font-semibold uppercase tracking-[0.14em] text-gold lg:pt-1.5">
                   {study.category}
-                </span>
-              </div>
-
-              <h3 className="font-heading text-lg font-semibold text-text-primary mb-2">
-                {study.company}
-              </h3>
-
-              <h4 className="font-heading text-xl font-bold text-cyan-primary mb-3">
-                {study.title}
-              </h4>
-
-              <p className="text-base text-text-secondary leading-relaxed mb-4">
-                {study.description}
-              </p>
-
-              <div className="mt-4">
-                <h5 className="font-heading text-sm font-bold uppercase tracking-wider text-text-primary mb-3">
-                  {study.deliverables[0].includes('Pharma') || study.deliverables[0].includes('Executive')
-                    ? study.deliverables[0].includes('Pharma') ? 'Achievements:' : 'Deliverables:'
-                    : study.deliverables[0].includes('AI-powered') ? 'Content:' : 'Deliverables:'}
-                </h5>
-                <ul className="space-y-2">
-                  {study.deliverables.map((item, i) => (
-                    <li
-                      key={i}
-                      className="relative pl-5 text-sm text-text-secondary leading-relaxed before:content-['→'] before:absolute before:left-0 before:text-cyan-primary before:font-bold"
-                    >
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {study.outcome && (
-                <div className="mt-4 p-3 bg-cyan-primary bg-opacity-5 border-l-4 border-cyan-primary rounded text-sm text-text-secondary leading-relaxed">
-                  <span className="font-bold text-cyan-primary mr-2">
-                    {study.outcome.label}
-                  </span>
-                  {study.outcome.text}
                 </div>
-              )}
 
-              {study.demonstrates && (
-                <div className="mt-4 p-3 bg-cyan-primary bg-opacity-5 border-l-4 border-cyan-primary rounded text-sm text-text-secondary leading-relaxed">
-                  <span className="font-bold text-cyan-primary mr-2">
-                    {study.demonstrates.label}
-                  </span>
-                  {study.demonstrates.text}
+                <div>
+                  <h3 className="font-display text-2xl text-cream leading-[1.15] mb-2">
+                    {study.title}
+                  </h3>
+                  <div className="font-util text-[11.5px] font-medium uppercase tracking-[0.1em] text-cream/55 mb-4">
+                    {study.company}
+                  </div>
+
+                  <p className="font-body text-[1.02rem] text-cream/90 leading-relaxed max-w-[64ch] mb-5">
+                    {study.description}
+                  </p>
+
+                  <div className="mb-5">
+                    <h4 className="font-util text-[11px] font-semibold uppercase tracking-[0.14em] text-cream/50 mb-3">
+                      {deliverablesLabel(study.deliverables)}
+                    </h4>
+                    <ul className="space-y-2 max-w-[64ch]">
+                      {study.deliverables.map((item, i) => (
+                        <li
+                          key={i}
+                          className="relative pl-5 font-body text-[0.95rem] text-cream/85 leading-relaxed before:content-['→'] before:absolute before:left-0 before:text-gold"
+                        >
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {accent && (
+                    <span className="inline-block font-util text-[13px] font-medium tracking-[0.01em] text-gold before:content-['→_']">
+                      {accent.text}
+                    </span>
+                  )}
                 </div>
-              )}
-            </motion.article>
-          ))}
+              </motion.article>
+            );
+          })}
         </div>
       </div>
     </section>

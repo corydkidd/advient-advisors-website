@@ -1,17 +1,31 @@
 import type { Metadata } from 'next';
-import { Inter, Space_Grotesk } from 'next/font/google';
+import { Gloock, Lora, Instrument_Sans } from 'next/font/google';
 import './globals.css';
 import GoogleAnalytics from '@/components/GoogleAnalytics';
+import MotionProvider from '@/components/MotionProvider';
 
-const inter = Inter({
+// Display — Gloock (headlines, hero tagline, stat numerals)
+const gloock = Gloock({
   subsets: ['latin'],
-  variable: '--font-inter',
+  weight: '400',
+  variable: '--font-display',
   display: 'swap',
 });
 
-const spaceGrotesk = Space_Grotesk({
+// Body — Lora (paragraphs, positioning, quotes)
+const lora = Lora({
   subsets: ['latin'],
-  variable: '--font-space-grotesk',
+  weight: ['400', '500', '600'],
+  style: ['normal', 'italic'],
+  variable: '--font-body',
+  display: 'swap',
+});
+
+// Utility — Instrument Sans (eyebrows, labels, nav, buttons, tags)
+const instrumentSans = Instrument_Sans({
+  subsets: ['latin'],
+  weight: ['400', '500', '600'],
+  variable: '--font-util',
   display: 'swap',
 });
 
@@ -42,7 +56,7 @@ export const metadata: Metadata = {
         url: '/api/og',
         width: 1200,
         height: 630,
-        alt: 'Dr. Cory Kidd - Enterprise AI Strategy & Implementation',
+        alt: 'Advient Advisors — We turn AI ambition into advantage. Dr. Cory Kidd, Ph.D.',
       },
     ],
   },
@@ -51,7 +65,12 @@ export const metadata: Metadata = {
     title: 'We turn AI ambition into advantage',
     description:
       'Turning AI ambition into advantage — 25+ years building and shipping AI systems for regulated industries.',
-    images: ['/api/og'],
+    images: [
+      {
+        url: '/api/og',
+        alt: 'Advient Advisors — We turn AI ambition into advantage. Dr. Cory Kidd, Ph.D.',
+      },
+    ],
   },
   robots: {
     index: true,
@@ -65,7 +84,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`}>
+    <html
+      lang="en"
+      className={`${gloock.variable} ${lora.variable} ${instrumentSans.variable}`}
+    >
       <head>
         <link rel="manifest" href="/site.webmanifest" />
       </head>
@@ -74,7 +96,9 @@ export default function RootLayout({
         <a href="#main" className="skip-link">
           Skip to main content
         </a>
-        <main id="main">{children}</main>
+        <MotionProvider>
+          <main id="main">{children}</main>
+        </MotionProvider>
       </body>
     </html>
   );
