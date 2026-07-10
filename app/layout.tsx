@@ -56,7 +56,7 @@ export const metadata: Metadata = {
         url: '/api/og',
         width: 1200,
         height: 630,
-        alt: 'Dr. Cory Kidd - Enterprise AI Strategy & Implementation',
+        alt: 'Advient Advisors — We turn AI ambition into advantage. Dr. Cory Kidd, Ph.D.',
       },
     ],
   },
@@ -65,7 +65,12 @@ export const metadata: Metadata = {
     title: 'We turn AI ambition into advantage',
     description:
       'Turning AI ambition into advantage — 25+ years building and shipping AI systems for regulated industries.',
-    images: ['/api/og'],
+    images: [
+      {
+        url: '/api/og',
+        alt: 'Advient Advisors — We turn AI ambition into advantage. Dr. Cory Kidd, Ph.D.',
+      },
+    ],
   },
   robots: {
     index: true,
