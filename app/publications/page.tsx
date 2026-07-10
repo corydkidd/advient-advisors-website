@@ -192,10 +192,10 @@ export default function PublicationPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="font-heading text-4xl lg:text-5xl font-bold text-text-primary mb-6">
+            <h1 className="font-heading text-4xl lg:text-5xl font-bold text-cream mb-6">
               Publications & Insights
             </h1>
-            <p className="text-lg text-text-secondary leading-relaxed">
+            <p className="text-lg text-cream/80 leading-relaxed">
               Access practical guides and frameworks developed from 25+ years of AI implementation
               experience. Download resources to help you navigate your AI journey.
             </p>
@@ -212,15 +212,15 @@ export default function PublicationPage() {
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.5 }}
               >
-                <div className="bg-charcoal p-8 rounded-xl border border-border-subtle">
-                  <div className="flex items-center justify-center w-16 h-16 bg-cyan-primary bg-opacity-10 rounded-xl mb-6 mx-auto">
-                    <Mail className="w-8 h-8 text-cyan-primary" />
+                <div className="bg-navy-soft p-8 rounded-sm border border-white/10">
+                  <div className="flex items-center justify-center w-16 h-16 bg-gold bg-opacity-10 rounded-sm mb-6 mx-auto">
+                    <Mail className="w-8 h-8 text-gold" />
                   </div>
 
-                  <h2 className="font-heading text-2xl font-semibold text-text-primary text-center mb-4">
+                  <h2 className="font-heading text-2xl font-semibold text-cream text-center mb-4">
                     Get Access to Publications
                   </h2>
-                  <p className="text-text-secondary text-center mb-6">
+                  <p className="text-cream/80 text-center mb-6">
                     Enter your email to unlock all publications. We&apos;ll occasionally send
                     updates on new AI insights.
                   </p>
@@ -236,7 +236,7 @@ export default function PublicationPage() {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="your@email.com"
-                        className="w-full px-4 py-3 bg-navy-deep border border-border-subtle rounded-lg text-text-primary placeholder-text-muted focus:outline-none focus:border-cyan-primary transition-colors duration-300"
+                        className="w-full px-4 py-3 bg-navy-deep border border-white/10 rounded-sm text-cream placeholder-cream/40 focus:outline-none focus:border-gold transition-colors duration-300"
                         disabled={isLoading || success}
                       />
                     </div>
@@ -247,14 +247,14 @@ export default function PublicationPage() {
                         id="consent"
                         checked={consent}
                         onChange={(e) => setConsent(e.target.checked)}
-                        className="mt-1 w-4 h-4 rounded border-border-subtle bg-navy-deep text-cyan-primary focus:ring-cyan-primary focus:ring-offset-0"
+                        className="mt-1 w-4 h-4 rounded border-white/10 bg-navy-deep text-gold focus:ring-gold focus:ring-offset-0"
                         disabled={isLoading || success}
                       />
-                      <label htmlFor="consent" className="text-sm text-text-secondary">
+                      <label htmlFor="consent" className="text-sm text-cream/80">
                         I agree to the{' '}
                         <Link
                           href="/privacy"
-                          className="text-cyan-primary hover:underline"
+                          className="text-gold hover:underline"
                           target="_blank"
                         >
                           Privacy Policy
@@ -288,7 +288,7 @@ export default function PublicationPage() {
                     <button
                       type="submit"
                       disabled={isLoading || success}
-                      className="w-full py-3 px-6 bg-cyan-primary text-navy-deep font-semibold rounded-lg hover:bg-opacity-90 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                      className="w-full py-3 px-6 bg-gold text-navy-deep font-semibold rounded-sm hover:bg-opacity-90 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                     >
                       {isLoading ? (
                         <>
@@ -321,29 +321,29 @@ export default function PublicationPage() {
                       return (
                         <motion.div
                           key={pub.id}
-                          className="bg-charcoal p-8 rounded-xl border border-border-subtle transition-all duration-300 hover:-translate-y-1 hover:border-cyan-primary hover:shadow-cyan-glow"
+                          className="bg-navy-soft p-8 rounded-sm border border-white/10 transition-all duration-300 hover:-translate-y-1 hover:border-gold "
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ duration: 0.6, delay: index * 0.1 }}
                         >
-                          <div className="w-16 h-16 flex items-center justify-center bg-cyan-primary bg-opacity-10 rounded-xl mb-6">
-                            <IconComponent className="w-8 h-8 text-cyan-primary" />
+                          <div className="w-16 h-16 flex items-center justify-center bg-gold bg-opacity-10 rounded-sm mb-6">
+                            <IconComponent className="w-8 h-8 text-gold" />
                           </div>
 
-                        <h3 className="font-heading text-xl font-semibold text-text-primary mb-3">
+                        <h3 className="font-heading text-xl font-semibold text-cream mb-3">
                           {pub.title}
                         </h3>
-                        <p className="text-text-secondary text-sm mb-4 leading-relaxed">
+                        <p className="text-cream/80 text-sm mb-4 leading-relaxed">
                           {pub.description}
                         </p>
 
                         {pub.pages && (
-                          <p className="text-text-muted text-xs mb-6">{pub.pages} pages • PDF</p>
+                          <p className="text-cream/50 text-xs mb-6">{pub.pages} pages • PDF</p>
                         )}
 
                         <button
                           onClick={() => handleDownload(pub)}
-                          className="inline-flex items-center gap-2 text-cyan-primary hover:text-text-primary transition-colors duration-300 font-medium"
+                          className="inline-flex items-center gap-2 text-gold hover:text-cream transition-colors duration-300 font-medium"
                         >
                           <Download className="w-4 h-4" />
                           Download PDF
@@ -354,13 +354,13 @@ export default function PublicationPage() {
                   </div>
                 ) : (
                   <div className="text-center py-16">
-                    <div className="w-16 h-16 flex items-center justify-center bg-cyan-primary bg-opacity-10 rounded-xl mb-6 mx-auto">
-                      <FileText className="w-8 h-8 text-cyan-primary" />
+                    <div className="w-16 h-16 flex items-center justify-center bg-gold bg-opacity-10 rounded-sm mb-6 mx-auto">
+                      <FileText className="w-8 h-8 text-gold" />
                     </div>
-                    <h3 className="font-heading text-xl font-semibold text-text-primary mb-3">
+                    <h3 className="font-heading text-xl font-semibold text-cream mb-3">
                       Publications Coming Soon
                     </h3>
-                    <p className="text-text-secondary">
+                    <p className="text-cream/80">
                       We&apos;re preparing new resources. Check back soon or watch your inbox for
                       updates.
                     </p>
