@@ -33,3 +33,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local working notes (kept local, not committed)
+add-lagos-rewrite-instructions.md

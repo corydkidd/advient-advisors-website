@@ -16,7 +16,7 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: 'Dr. Cory Kidd - Enterprise AI Strategy & Implementation | Advient Advisors',
+  title: 'Advient Advisors — Enterprise AI, built not just advised',
   description:
     'We turn AI ambition into advantage for pharmaceutical, maritime, and industrial companies — working systems that run, not slideware. MIT PhD with 25+ years building AI.',
   keywords: [
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: 'Dr. Cory Kidd' }],
   openGraph: {
-    title: 'Dr. Cory Kidd - Enterprise AI Strategy & Implementation',
+    title: 'We turn AI ambition into advantage',
     description:
       'AI advisor and operator helping pharma, maritime, and industrial companies turn ambition into working systems that run.',
     url: 'https://www.advientadvisors.com',
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Dr. Cory Kidd - Enterprise AI Strategy & Implementation',
+    title: 'We turn AI ambition into advantage',
     description:
       'Turning AI ambition into advantage — 25+ years building and shipping AI systems for regulated industries.',
     images: ['/api/og'],
