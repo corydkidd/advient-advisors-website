@@ -9,28 +9,38 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        'navy-deep': '#0A1628',
-        'navy-medium': '#1A2332',
-        'charcoal': '#1E2530',
-        'cyan-primary': '#00D9FF',
-        'gold-accent': '#FFB800',
-        'text-primary': '#E8E9ED',
-        'text-secondary': '#A0A4B0',
-        'text-muted': '#6B7280',
-        'border-subtle': 'rgba(255, 255, 255, 0.1)',
-        'border-medium': 'rgba(255, 255, 255, 0.2)',
+        // New 2026 brand palette
+        'navy': '#1B2A4A',
+        'navy-deep': '#14213B',
+        'navy-soft': '#22345A',
+        'cream': '#F8F4EE',
+        'cream-dim': '#E9E2D6',
+        'gold': '#C9A84C',
+        'gold-soft': '#D8BD6A',
+        'ink': '#1C2438',
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
-        heading: ['Space Grotesk', 'system-ui', 'sans-serif'],
-        mono: ['JetBrains Mono', 'Courier New', 'monospace'],
+        // Display — Gloock (headlines, hero tagline, stat numerals)
+        heading: ['var(--font-display)', 'Georgia', 'Times New Roman', 'serif'],
+        display: ['var(--font-display)', 'Georgia', 'Times New Roman', 'serif'],
+        // Body — Lora (paragraphs, positioning, quotes)
+        sans: ['var(--font-body)', 'Georgia', 'serif'],
+        body: ['var(--font-body)', 'Georgia', 'serif'],
+        // Utility — Instrument Sans (eyebrows, labels, nav, buttons, tags)
+        util: ['var(--font-util)', 'system-ui', '-apple-system', 'sans-serif'],
+      },
+      borderRadius: {
+        DEFAULT: '2px',
+        sm: '2px',
+        md: '3px',
+        lg: '3px',
+        xl: '3px',
       },
       backgroundImage: {
-        'cyan-glow': 'radial-gradient(circle, rgba(0, 217, 255, 0.2) 0%, transparent 70%)',
-      },
-      boxShadow: {
-        'cyan-glow': '0 0 20px rgba(0, 217, 255, 0.2)',
-        'cyan-glow-lg': '0 0 30px rgba(0, 217, 255, 0.2), 0 4px 12px rgba(0, 0, 0, 0.3)',
+        'hero-gradient':
+          'radial-gradient(120% 90% at 82% 8%, #24365e 0%, rgba(36,54,94,0) 55%), linear-gradient(180deg, #1B2A4A 0%, #14213B 100%)',
+        'cta-gradient':
+          'radial-gradient(100% 120% at 15% 100%, #24365e 0%, rgba(36,54,94,0) 60%), linear-gradient(180deg, #1B2A4A 0%, #1B2A4A 100%)',
       },
     },
   },

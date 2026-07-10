@@ -2,75 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap');
-
 :root {
-  /* Backgrounds */
-  --navy-deep: #0A1628;
-  --navy-medium: #1A2332;
-  --charcoal: #1E2530;
-
-  /* Accent Colors */
-  --cyan-primary: #00D9FF;
-  --cyan-glow: rgba(0, 217, 255, 0.2);
-  --cyan-dim: rgba(0, 217, 255, 0.1);
-  --gold-accent: #FFB800;
-
-  /* Text Colors */
-  --text-primary: #E8E9ED;
-  --text-secondary: #A0A4B0;
-  --text-muted: #6B7280;
-
-  /* Semantic Colors */
-  --success: #10B981;
-  --warning: #F59E0B;
-
-  /* Borders */
-  --border-subtle: rgba(255, 255, 255, 0.1);
-  --border-medium: rgba(255, 255, 255, 0.2);
-
-  /* Spacing */
-  --space-1: 0.25rem;
-  --space-2: 0.5rem;
-  --space-3: 0.75rem;
-  --space-4: 1rem;
-  --space-5: 1.25rem;
-  --space-6: 1.5rem;
-  --space-8: 2rem;
-  --space-10: 2.5rem;
-  --space-12: 3rem;
-  --space-16: 4rem;
-  --space-20: 5rem;
-  --space-24: 6rem;
-
-  /* Typography */
-  --text-xs: 0.75rem;
-  --text-sm: 0.875rem;
-  --text-base: 1rem;
-  --text-lg: 1.125rem;
-  --text-xl: 1.25rem;
-  --text-2xl: 1.5rem;
-  --text-3xl: 1.875rem;
-  --text-4xl: 2.25rem;
-  --text-5xl: 3rem;
-  --text-6xl: 3.75rem;
+  /* ---- 2026 brand palette ---- */
+  --navy: #1B2A4A;        /* primary dark foundation */
+  --navy-deep: #14213B;   /* deeper dark for stat sections, footer */
+  --navy-soft: #22345A;   /* hero gradient lift, hover fills */
+  --cream: #F8F4EE;       /* light background + light text on navy */
+  --cream-dim: #E9E2D6;   /* muted light */
+  --gold: #C9A84C;        /* precision accent */
+  --gold-soft: #D8BD6A;   /* gold hover */
+  --ink: #1C2438;         /* body text on cream */
+  --gold-kicker: #B08F32; /* gold eyebrow on cream (contrast-safe) */
+  --gold-hl: #9C7C22;     /* emphasized gold word on cream */
 
   /* Layout */
-  --max-width-container: 1400px;
-  --max-width-content: 1200px;
+  --max-width-container: 1180px;
+  --max-width-content: 1180px;
   --max-width-prose: 65ch;
 
-  --padding-mobile: var(--space-6);
-  --padding-tablet: var(--space-8);
-  --padding-desktop: var(--space-12);
-}
-
-@media (min-width: 1024px) {
-  :root {
-    --text-4xl: 2.5rem;
-    --text-5xl: 3.5rem;
-    --text-6xl: 4.5rem;
-  }
+  --padding-mobile: 24px;
+  --padding-tablet: 32px;
+  --padding-desktop: 40px;
 }
 
 * {
@@ -85,16 +37,18 @@ html {
 
 body {
   margin: 0;
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  background: var(--navy-deep);
-  color: var(--text-primary);
+  font-family: var(--font-body), Georgia, serif;
+  background: var(--navy);
+  color: var(--cream);
+  line-height: 1.55;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-family: var(--font-display), Georgia, 'Times New Roman', serif;
+  font-weight: 400;
 }
 
 /* Container utility */
@@ -117,11 +71,58 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-/* Focus states for accessibility */
-a:focus,
-button:focus {
-  outline: 2px solid var(--cyan-primary);
-  outline-offset: 2px;
+/* ---------- calibration tick signature ---------- */
+.ticks {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  height: 18px;
+}
+.ticks span {
+  width: 1.5px;
+  background: var(--gold);
+  display: block;
+}
+.ticks span:nth-child(1) { height: 7px; }
+.ticks span:nth-child(2) { height: 12px; }
+.ticks span:nth-child(3) { height: 18px; }
+.ticks span:nth-child(4) { height: 10px; }
+.ticks span:nth-child(5) { height: 14px; }
+
+/* ---------- stats grid (vertical hairline dividers) ---------- */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+.stat-cell {
+  padding: 6px 32px;
+  border-left: 1px solid rgba(255, 255, 255, 0.09);
+}
+.stat-cell:first-child {
+  padding-left: 0;
+  border-left: none;
+}
+@media (max-width: 900px) {
+  .stat-grid {
+    grid-template-columns: 1fr 1fr;
+    row-gap: 36px;
+  }
+  .stat-cell {
+    padding: 6px 26px;
+  }
+  .stat-cell:nth-child(odd) {
+    border-left: none;
+    padding-left: 0;
+  }
+}
+
+/* Focus states for accessibility — gold */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
 }
 
 /* Skip to main content link */
@@ -129,9 +130,10 @@ button:focus {
   position: absolute;
   top: -40px;
   left: 0;
-  background: var(--cyan-primary);
+  background: var(--gold);
   color: var(--navy-deep);
-  padding: 8px;
+  font-family: var(--font-util), system-ui, sans-serif;
+  padding: 8px 12px;
   text-decoration: none;
   z-index: 100;
 }
@@ -140,58 +142,31 @@ button:focus {
   top: 0;
 }
 
-/* Animations */
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
-    transform: translateX(-50%) translateY(0);
-  }
-  40% {
-    transform: translateX(-50%) translateY(-10px);
-  }
-  60% {
-    transform: translateX(-50%) translateY(-5px);
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-/* Utility classes */
-.fade-in {
-  animation: fadeIn 0.8s ease-out forwards;
-}
-
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 10px;
 }
-
 ::-webkit-scrollbar-track {
   background: var(--navy-deep);
 }
-
 ::-webkit-scrollbar-thumb {
-  background: var(--charcoal);
-  border-radius: 5px;
+  background: var(--navy-soft);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold);
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: var(--cyan-primary);
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
